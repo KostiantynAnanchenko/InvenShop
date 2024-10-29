@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>PRODUCTS</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .content {
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1>Products</h1>
+        </div>
+    </div>
+
+
+    <div class="col text-center">
+        <h3>Find by EAN code</h3>
+        <form th:action="@{/products/search}" method="get">
+            <input style="font-weight:bold;width:300px" type="number" name="ean" required>
+            <p></p>
+            <button class="btn btn-primary" style="border-radius: 10px;width:100px;" type="submit">Search</button>
+        </form>
+    </div>
+    <p></p>
+
+
+    <div th:each="product : ${listProducts}">
+        <div class="row">
+            <div class="col content">
+                <p><strong>Name:</strong> <span th:text="${product.name}"></span></p>
+                <p><strong>Quantity:</strong> <span th:text="${product.quantity}"></span></p>
+                <p><strong>Price:</strong> <span th:text="${product.price}"></span></p>
+                <p><strong>EAN:</strong> <span th:text="${product.EAN}"></span></p>
+
+
+                <form th:action="@{/products/delete}" method="post">
+                    <a th:href="@{'edit/' + ${product.id}}" class="btn btn-success" role="button">EDIT</a>
+                    <input type="hidden" name="id" th:value="${product.id}">
+                    <button type="submit" class="btn btn-danger">DELETE</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col text-center">
+            <a href="/products/list" class="btn btn-secondary" style="margin-top: 20px;">Back to All Products</a>
+        </div>
+    </div>
+    <p></p>
+    <div class="row">
+        <div class="col text-center">
+            <a href="/products/add" class="btn btn-success" role="button">ADD NEW Product</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

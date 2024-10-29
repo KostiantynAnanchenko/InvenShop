@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>EDIT NOTE</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<h1 style="margin-left:100px">EDIT PRODUCT</h1>
+<form style="margin:40px" th:action="@{/products/edit}" method="post">
+    <input  type="hidden" th:name="id" th:value="${product.id}" />
+    <h3>Name</h3>
+    <input style="font-weight:bold;width:300px" type="text" th:name="name" th:value= "${product.name}"><br>
+    <p></p>
+    <h3>Quantity</h3>
+    <input style="margin-bottom:20px;width:300px;" type="text" th:name="quantity" th:value="${product.quantity}"><br>
+    <h3>Price</h3>
+    <input style="margin-bottom:20px;width:300px;" type="text" th:name="price" th:value="${product.price}"><br>
+    <h3>EAN</h3>
+    <input style="margin-bottom:20px;width:300px;" type="text" th:name="EAN" th:value="${product.EAN}"><br>
+    <button class="btn btn-primary" style="border-radius: 10px;width:100px;" type="submit">SAVE</button><br>
+</form>
+</body>
+</html>
